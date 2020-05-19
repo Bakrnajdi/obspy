@@ -58,6 +58,14 @@ def cwt(st, dt, w0, fmin, fmax, nf=100, wl='morlet'):
 
         def scale(f):
             return w0 / (2 * np.pi * f)
+        
+    elif wl=='ben':
+        
+        def psi(t):
+            return 2/3*np.pi**(-.24)*(1-t**2)*np.exp(1j*w0*t)*np.exp(-t**2/2.)
+        
+        def scale(f):
+            return w0 / (2 * np.pi * f)
     else:
         raise ValueError('wavelet type "' + wl + '" not defined!')
 
