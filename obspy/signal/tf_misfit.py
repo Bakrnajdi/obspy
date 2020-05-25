@@ -62,7 +62,14 @@ def cwt(st, dt, w0, fmin, fmax, nf=100, wl='morlet'):
     elif wl=='ben':
         
         def psi(t):
-            return 2/3*np.pi**(-.24)*(1-t**2)*np.exp(1j*w0*t)*np.exp(-t**2/2.)
+            return 2/3*np.pi**(-.25)*(1-t**2)*np.exp(1j*w0*t)*np.exp(-t**2/2.)
+        
+        def scale(f):
+            return w0 / (2 * np.pi * f)
+        
+    elif wl=='mexh':
+        def psi(t):
+            return 2/3*np.pi**(-.25)*(1-t**2)*np.exp(-t**2/2.)
         
         def scale(f):
             return w0 / (2 * np.pi * f)
